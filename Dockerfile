@@ -7,4 +7,4 @@ RUN touch /var/log/cron.log
 
 ADD run.sh /run.sh
 
-CMD cron && tail -f /var/log/cron.log
+ENTRYPOINT sh /run.sh

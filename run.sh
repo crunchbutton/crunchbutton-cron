@@ -1,8 +1,4 @@
 #!/bin/bash
-if [ "$#" -eq 0 ]; then
-	echo "No command/process type specified"
-        exit 1
-fi
 
 if [[ $TUTUM_TRIGGER_BODY =~ ^GIT_BRANCH:.*$ ]]; then
 	echo "Using \$GIT_BRANCH from \$TUTUM_TRIGGER_BODY"
@@ -40,4 +36,4 @@ else
 	exit 1
 fi
 
-exec "$@"
+cron && tail -f /var/log/cron.log
