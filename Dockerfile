@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 	&& docker-php-ext-install mbstring \
 	&& docker-php-ext-install zip
 
-RUN echo "* * * * * root /app/cli/master_cron.sh > /var/log/cron.log 2>&1" >> /etc/crontab
+RUN echo "* * * * * root $CRON_FILE > /var/log/cron.log 2>&1" >> /etc/crontab
 RUN touch /var/log/cron.log
 
 RUN cd /app && curl -sS https://getcomposer.org/installer | php
