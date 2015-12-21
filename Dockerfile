@@ -15,8 +15,7 @@ RUN apt-get update && apt-get install -y \
 RUN echo "* * * * * root $CRON_FILE > /var/log/cron.log 2>&1" >> /etc/crontab
 RUN touch /var/log/cron.log
 
-RUN cd /app && curl -sS https://getcomposer.org/installer | php
-RUN cd /app && php composer.phar install --no-dev --optimize-autoloader --prefer-dist
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=bin --filename=composer
 
 ADD run.sh /run.sh
 
