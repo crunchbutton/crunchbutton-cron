@@ -1,5 +1,7 @@
 FROM php:7.0-fpm
 
+ADD run.sh /run.sh
+
 RUN apt-get update && apt-get install -y \
 	gnome-schedule \
 	libmcrypt-dev \
@@ -15,7 +17,5 @@ RUN apt-get update && apt-get install -y \
 RUN touch /var/log/cron.log
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
-
-ADD run.sh /run.sh
 
 CMD sh /run.sh
