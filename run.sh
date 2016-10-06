@@ -36,7 +36,7 @@ else
 	exit 1
 fi
 
-export $(cut -d= -f1 $HOME/.profile) > $HOME/.profile
+export > $HOME/.profile
 echo "* * * * * root $CRON_FILE > /var/log/cron.log 2>&1" >> /etc/crontab
 
 cron && tail -f /var/log/cron.log
